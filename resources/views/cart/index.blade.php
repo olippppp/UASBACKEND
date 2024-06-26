@@ -72,7 +72,7 @@
                                     <p class="mb-0 mt-4">Rp.
                                         {{ number_format($orderItem->jumlah * $orderItem->harga, 0, '.', '.') }}</p>
 
-                                    @php $total = $orderItem->jumlah * $orderItem->harga; @endphp
+                                    @php $total += $orderItem->jumlah * $orderItem->harga; @endphp
                                 </td>
                                 <td>
                                     <a href="{{ route('cart.order_item.hapus', $orderItem->id) }}"

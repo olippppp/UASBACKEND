@@ -29,7 +29,7 @@ class OrderController extends Controller
          if ($request->has('cari')) {
              $keyword = $request->cari;
              $query->where(function ($query) use ($keyword) {
-                 $query->where('no_order', 'like', '%' . $keyword . '%');
+                 $query->where('no_order', 'ilike', '%' . $keyword . '%');
              });
          }
  
@@ -63,24 +63,16 @@ class OrderController extends Controller
  
          $orders = $query->paginate($items_per_page);
  
- 
-         // Total orders count
-         $orders_total = Order::where('orders.status', '!=', 0)->where('customer_id', $customer)->count();
- 
          $query = Order::query();
  
          if ($request->has('cari')) {
              $keyword = $request->cari;
              $query->where(function ($query) use ($keyword) {
-                 $query->whereHas('customer', function ($query) use ($keyword) {
-                     $query->where('nama', 'like', '%' . $keyword . '%')
-                         ->orWhere('email', 'like', '%' . $keyword . '%');
-                 })
-                     ->orWhere('no_order', 'like', '%' . $keyword . '%');;
+                 $query->where('no_order', 'ilike', '%' . $keyword . '%');;
              });
          }
  
-         $orders_total = $query->where('orders.status', '!=', 0)->where('customer_id', $customer)->count();
+         $orders_total = $query->count();
  
          $status_pemesanan = [
              1 => 'Sedang diproses',

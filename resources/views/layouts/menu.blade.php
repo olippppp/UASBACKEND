@@ -34,7 +34,8 @@
                                  class="nav-item nav-link {{ request()->is('admin/kategori*') ? 'active' : '' }}">Kategori</a>
                              <a href="{{ route('admin.menu') }}"
                                  class="nav-item nav-link {{ request()->is('admin/menu*') ? 'active' : '' }}">Menu</a>
-                             <a href="{{ route('admin') }}" class="nav-item nav-link">Pemesanan</a>
+                             <a href="{{ route('admin.orders') }}"
+                                 class="nav-item nav-link {{ request()->is('admin/orders*') ? 'active' : '' }}">Pemesanan</a>
                              <a href="{{ route('admin.admin') }}"
                                  class="nav-item nav-link {{ request()->is('admin/admin*') ? 'active' : '' }}">Admin</a>
 
@@ -48,7 +49,10 @@
                              <a href="{{ route('admin.logout') }}" class="nav-item nav-link">Logout</a>
                          </div>
                          <div class="d-flex m-3 me-0">
-
+                             <div style="margin-right: 10px; margin-top: 5px;">
+                                 <i class="fas fa-user-cog text-primary" style="margin-right: 5px"></i>
+                                 {{ Auth::user()->name }}
+                             </div>
                          </div>
                      </div>
                  @else
@@ -60,12 +64,16 @@
                                  class="nav-item nav-link {{ request()->is('menu*') ? 'active' : '' }}">Menu</a>
 
 
-                             <a href="{{ route('kontak') }}" class="nav-item nav-link {{ request()->is('kontak') ? 'active' : '' }}">Kontak Kami</a>
+                             <a href="{{ route('kontak') }}"
+                                 class="nav-item nav-link {{ request()->is('kontak') ? 'active' : '' }}">Kontak
+                                 Kami</a>
                              <a href="{{ route('admin') }}" class="nav-item nav-link">Admin</a>
 
                              @if (Auth::guard('customer')->check())
-                                 <a href="{{ route('orders') }}" class="nav-item nav-link {{ request()->is('orders*') ? 'active' : '' }}">Riwayat Pemesanan</a>
-                                 <a href="{{ route('admin.logout') }}" class="nav-item nav-link">Logout</a>
+                                 <a href="{{ route('orders') }}"
+                                     class="nav-item nav-link {{ request()->is('orders*') ? 'active' : '' }}">Riwayat
+                                     Pemesanan</a>
+                                 <a href="{{ route('customer.logout') }}" class="nav-item nav-link">Logout</a>
                              @else
                                  <a href="{{ route('customer.login') }}"
                                      class="nav-item nav-link {{ request()->is('login') ? 'active' : '' }}">Login</a>
@@ -75,7 +83,10 @@
                          </div>
                          @if (Auth::guard('customer')->check())
                              <div class="d-flex m-3 me-0">
-                                 <a href="{{ route('cart') }}" class="position-relative me-4 my-auto">
+
+                               
+
+                                 <a href="{{ route('cart') }}" class="position-relative me-2 my-auto">
                                      <i class="fa fa-shopping-bag fa-2x"></i>
 
                                      @if (isset($cartItemCount) && $cartItemCount > 0)
@@ -83,8 +94,14 @@
                                              class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                              style="top: -5px; left: 15px; height: 20px; min-width: 20px;">{{ $cartItemCount }}</span>
                                      @endif
-
                                  </a>
+
+                                 <div class="d-flex m-3 me-0">
+                                    <div style="margin-right: 10px; margin-top: 5px;">
+                                        {{ Auth::guard('customer')->user()->nama }}
+                                    </div>
+                                </div>
+                                 
                              </div>
                          @endif
                      </div>

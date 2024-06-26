@@ -6,6 +6,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminMejaController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KategoriController;
@@ -69,6 +70,11 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/admin/customer/store', [AdminCustomerController::class, 'store'])->name('admin.customer.store');
   Route::put('/admin/customer/update/{id}', [AdminCustomerController::class, 'update'])->name('admin.customer.update');
   Route::delete('/admin/customer/destroy/{id}', [AdminCustomerController::class, 'destroy'])->name('admin.customer.destroy');
+
+  Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
+  Route::get('/admin/orders/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.orders.detail');
+  Route::get('/admin/orders/ubah_status/{id}', [AdminOrderController::class, 'ubah_status'])->name('admin.orders.ubah_status');
+  Route::put('/admin/orders/ubah_status/{id}', [AdminOrderController::class, 'ubah_status_process'])->name('admin.orders.ubah_status_process');
 });
 
 
@@ -86,6 +92,8 @@ Route::middleware(['cart.item.count'])->group(function () {
   Route::post('/cek_login', [CustomerController::class, 'cek_login'])->name('customer.cek_login');
   Route::get('/registrasi', [CustomerController::class, 'registrasi'])->name('customer.registrasi');
   Route::post('/buat_akun', [CustomerController::class, 'buat_akun'])->name('customer.buat_akun');
+  Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+
 
   //cart
   Route::get('/cart', [CartController::class, 'index'])->name('cart');
@@ -97,5 +105,4 @@ Route::middleware(['cart.item.count'])->group(function () {
 
   Route::get('/orders', [OrderController::class, 'index'])->name('orders');
   Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
-
 });

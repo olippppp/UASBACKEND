@@ -6,15 +6,15 @@
 
 @section('content')
     <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
+    <div class="container-fluid page-header admin py-5">
         <h1 class="text-center text-white display-6">Detail Pesanan</h1>
         <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="{{ route('beranda') }}">Beranda</a></li>
-            <li class="breadcrumb-item active text-white">Detail Pesanan</li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin') }}">Beranda</a></li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin.orders') }}">Daftar Pesanan</a></li>
+            <li class="breadcrumb-item admin active text-white">Detail Pesanan</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
-
     <style>
         .detail-order-table tr td {
             padding: 5px 10px;
@@ -34,6 +34,8 @@
                                 <td>
                                     @if ($order->meja)
                                         {{ $order->meja->kode }} ({{ $order->meja ? $order->meja->no_meja : '' }})
+                                    @else
+                                        -
                                     @endif
                                 </td>
                             </tr>
@@ -48,6 +50,7 @@
                                 <td>Tanggal Pemesanan</td>
                                 <td>:</td>
                                 <td>{{ $order->tgl_pemesanan ? \Carbon\Carbon::parse($order->tgl_pemesanan)->format('d/m/Y H:i:s') : '-' }}
+                                </td>
                             </tr>
 
                             <tr>
@@ -60,7 +63,8 @@
                             <tr>
                                 <td>Status Pemesanan</td>
                                 <td>:</td>
-                                <td style="font-weight: 600; color: {{ $order->status == 2 ? '#21af00' : '#ff7800' }}">
+                                <td
+                                    style="font-weight: 600; color: {{ $order->status == 2 ? '#21af00' : ($order->status == 1 ? '#ff7800' : ($order->status > 0 ? 'gray' : 'gray')) }}">
                                     {{ $status_pemesanan[$order->status] }}
                                 </td>
                             </tr>
@@ -80,10 +84,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Menu</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Products</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
                                 </tr>
                             </thead>
