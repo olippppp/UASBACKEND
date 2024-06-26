@@ -135,6 +135,14 @@
     color: var(--bs-primary);
 }
 
+.navbar .navbar-nav.admin .nav-link:hover,
+.navbar .navbar-nav.admin .nav-link.active,
+.fixed-top.bg-white .navbar .navbar-nav.admin .nav-link:hover,
+.fixed-top.bg-white .navbar .navbar-nav.admin .nav-link.active {
+    color:#0caebe;
+    font-weight: 600;
+}
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -184,6 +192,13 @@
     background-size: cover;
 }
 
+.hero-header.admin {
+    background: linear-gradient(rgb(70 69 68 / 35%), rgb(139 139 139 / 45%)), url(/img/background_admin.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .carousel-item {
     position: relative;
 }
@@ -220,6 +235,14 @@
 .page-header {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/img/background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-header.admin {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/img/background_admin.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -295,6 +318,10 @@
 
 .fruite .fruite-categorie .fruite-name a:hover {
     color: var(--bs-secondary);
+}
+
+.fruite .fruite-categorie .fruite-name a.active {
+    color: green;
 }
 
 .fruite .fruite-item {

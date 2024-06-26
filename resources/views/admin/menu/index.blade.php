@@ -6,11 +6,11 @@
 
 @section('content')
     <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
+    <div class="container-fluid page-header admin py-5">
         <h1 class="text-center text-white display-6">Menu</h1>
         <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="{{ route('admin') }}">Beranda</a></li>
-            <li class="breadcrumb-item active text-white">Menu</li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin') }}">Beranda</a></li>
+            <li class="breadcrumb-item admin active text-white">Menu</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
@@ -50,7 +50,7 @@
                                     <p class="mb-0 mt-2">{{ $value->nama }}</p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-2">{{ $value->kategori_nama }}</p>
+                                    <p class="mb-0 mt-2">{{ $value->kategori->nama }}</p>
                                 </td>
                                 <td>
                                     <p class="mb-0 mt-2">{{ $value->deskripsi }}</p>

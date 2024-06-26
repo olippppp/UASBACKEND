@@ -16,4 +16,10 @@ class Kategori extends Model
     ];
 
     protected $table = 'kategori';
+
+    // Define relationship with OrderItems
+    public function menu()
+    {
+        return $this->hasMany(Menu::class, 'kategori_id', 'id');
+    }
 }

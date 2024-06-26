@@ -13,8 +13,7 @@ class MenuController extends Controller
      //index
      public function index()
      {
-         $menu = Menu::orderBy('menu.nama', 'asc')->join('kategori', 'kategori.id', "=", "menu.kategori")
-             ->select('menu.*', 'kategori.nama as kategori_nama')
+         $menu = Menu::orderBy('menu.nama', 'asc')
              ->get();
  
          return view('admin.menu.index', compact('menu'));
@@ -44,7 +43,7 @@ class MenuController extends Controller
          try {
              DB::table('menu')->insert([
                  'nama' => $request->nama,
-                 'kategori' => $request->kategori,
+                 'kategori_id' => $request->kategori,
                  'deskripsi' => $request->deskripsi,
                  'harga' => $request->harga,
                  'foto' => $dataFoto
@@ -78,7 +77,7 @@ class MenuController extends Controller
          try {
              $update = [
                  'nama' => $request->nama,
-                 'kategori' => $request->kategori,
+                 'kategori_id' => $request->kategori,
                  'deskripsi' => $request->deskripsi,
                  'harga' => $request->harga
              ];
@@ -105,4 +104,8 @@ class MenuController extends Controller
  
          return redirect()->route('admin.menu')->with('success', 'Menu berhasil dihapus.');
      }
+
+     
 }
+
+

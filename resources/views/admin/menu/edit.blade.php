@@ -6,12 +6,12 @@
 
 @section('content')
     <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
+    <div class="container-fluid page-header admin py-5">
         <h1 class="text-center text-white display-6">Menu</h1>
         <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="{{ route('admin') }}">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.menu') }}">Menu</a></li>
-            <li class="breadcrumb-item active text-white">Ubah Menu</li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin') }}">Beranda</a></li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin.menu') }}">Menu</a></li>
+            <li class="breadcrumb-item admin active text-white">Ubah Menu</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
@@ -42,7 +42,7 @@
                                 <select name="kategori" class="form-control" required style="background: white;">
                                     <option value="" disabled>Pilih Kategori</option>
                                     @foreach ($kategori as $kat)
-                                        <option value="{{ $kat->id }}" {{ $menu->kategori == $kat->id ? 'selected' : '' }}>{{ $kat->nama }}</option>
+                                        <option value="{{ $kat->id }}" {{ $menu->kategori_id == $kat->id ? 'selected' : '' }}>{{ $kat->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

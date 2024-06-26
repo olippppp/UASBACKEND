@@ -16,7 +16,7 @@ class CreateMenuTable extends Migration
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('kategori')->constrained('kategori');
+            $table->foreignId('kategori_id')->constrained('kategori');
             $table->string('deskripsi');
             $table->integer('harga');
             $table->binary('foto')->nullable();

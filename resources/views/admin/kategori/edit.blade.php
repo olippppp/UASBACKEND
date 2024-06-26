@@ -6,12 +6,12 @@
 
 @section('content')
     <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
+    <div class="container-fluid page-header admin py-5">
         <h1 class="text-center text-white display-6">Kategori</h1>
         <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="{{ route('admin') }}">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.kategori') }}">Kategori</a></li>
-            <li class="breadcrumb-item active text-white">Ubah Kategori</li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin') }}">Beranda</a></li>
+            <li class="breadcrumb-item admin"><a href="{{ route('admin.kategori') }}">Kategori</a></li>
+            <li class="breadcrumb-item admin active text-white">Ubah Kategori</li>
         </ol>
     </div>
     <!-- Single Page Header End -->

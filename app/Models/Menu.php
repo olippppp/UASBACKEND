@@ -11,7 +11,7 @@ class Menu extends Model
 
     protected $fillable = [
         'nama',
-        'kategori',
+        'kategori_id',
         'deskripsi',
         'harga',
         'foto',
@@ -20,4 +20,10 @@ class Menu extends Model
     ];
 
     protected $table = 'menu';
+
+    // Define relationship with Order
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
+    }
 }
