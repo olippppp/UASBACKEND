@@ -139,9 +139,10 @@ class AdminOrderController extends Controller
             ];
 
             if ($status == 1) {
-                $update["tanggal_pembayaran"] = new DateTime();
-            } else if ($status == 6) {
-                $update["tanggal_pengiriman"] = new DateTime();
+                $update["tgl_pemesanan"] = new DateTime();
+            }
+            else if ($status == 2) {
+                $update["tgl_pembayaran"] = new DateTime();
             }
 
             Order::whereId($id)->update($update);
